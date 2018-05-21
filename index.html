@@ -8,9 +8,9 @@
 <h3>喬光LED - 計算工具</h3>
 <tr bgcolor="#FFFFFF">
 <td colspan="2">單片瓦數：</td>
-<td><input type="text" size="15" maxlength="5" name="watt"></td></tr><tr bgcolor="#FFFFFF">
+<td><input type="number" size="15" maxlength="5" name="watt"></td></tr><tr bgcolor="#FFFFFF">
 <td colspan="2">模組數量：</td>
-<td><input type="text" size="15" maxlength="5" name="nums" onkeyup="totalwatt.value= this.value * watt.value; totalamp110.value= totalwatt.value/110; totalamp2201.value= totalwatt.value/220; totalamp2203.value= totalwatt.value/220/1.732; totalamp3803.value= totalwatt.value/380/1.732;"></td></tr>
+<td><input type="number" size="15" maxlength="5" name="nums" onkeyup="totalwatt.value= this.value * watt.value; totalamp110.value= totalwatt.value/110; totalamp2201.value= totalwatt.value/220; totalamp2203.value= totalwatt.value/220/1.732; totalamp3803.value= totalwatt.value/380/1.732;"></td></tr>
 <td colspan="2">總瓦數：</td>
 <td><input type="text" size="15" maxlength="5" name="totalwatt" onkeyup=";">瓦(W)</td></tr>
 <td colspan="2">總電流(110V)：</td>
