@@ -9,37 +9,37 @@
 <h3>喬光LED - 計算工具</h3>
 <tr bgcolor="#FFFFFF">
 <td colspan="2">單片瓦數：</td>
-<td><input type="number"  maxlength="5" name="watt">瓦(W)</td></tr><tr bgcolor="#FFFFFF">
+<td><input type="number"  name="watt" style=width:50px>瓦(W)</td></tr><tr bgcolor="#FFFFFF">
 <td colspan="2">模組數量：</td>
-<td><input type="number"  maxlength="5" name="nums" onkeyup="totalwatt.value= this.value * watt.value; totalamp110.value= totalwatt.value/110; totalamp2201.value= totalwatt.value/220; totalamp2203.value= totalwatt.value/220/1.732; totalamp3803.value= totalwatt.value/380/1.732; totalamp110s.value= totalwatt.value/110*1.3; totalamp2201s.value= totalwatt.value/220*1.3; totalamp2203s.value= totalwatt.value/220/1.732*1.3; totalamp3803s.value= totalwatt.value/380/1.732*1.3;">片</td></tr>
+<td><input type="number"  name="nums" style=width:50px onkeyup="totalwatt.value= Math.floor((this.value * watt.value)*100)/100; totalamp110.value= Math.floor((totalwatt.value/110)*100)/100; totalamp2201.value= Math.floor((totalwatt.value/220)*100)/100; totalamp2203.value= Math.floor((totalwatt.value/220/1.732)*100)/100; totalamp3803.value= Math.floor((totalwatt.value/380/1.732)*100)/100; totalamp110s.value= Math.floor((totalwatt.value/110*1.3)*100)/100; totalamp2201s.value= Math.floor((totalwatt.value/220*1.3)*100)/100; totalamp2203s.value= Math.floor((totalwatt.value/220/1.732*1.3)*100)/100; totalamp3803s.value= Math.floor((totalwatt.value/380/1.732*1.3)*100)/100;">片</td></tr>
 <td colspan="2">總瓦數：</td>
-<td><input type="number"  maxlength="5" name="totalwatt" disabled="disabled">瓦(W)</td></tr>
+<td><input type="text"  name="totalwatt" style=width:50px disabled="disabled">瓦(W)</td></tr>
 <td colspan="2">總電流(110V)：</td>
-<td><input type="number"  maxlength="5" name="totalamp110" disabled="disabled">安培(A)</td></tr>
+<td><input type="text"  name="totalamp110" style=width:50px disabled="disabled">安培(A)</td></tr>
 <td colspan="2">總電流含安全值(110V)：</td>
-<td><input type="number"  maxlength="5" name="totalamp110s" disabled="disabled">安培(A)</td></tr>
+<td><input type="text"  name="totalamp110s" style=width:50px disabled="disabled">安培(A)</td></tr>
 <td colspan="2">總電流(單相220V)：</td>
-<td><input type="number"  maxlength="5" name="totalamp2201" disabled="disabled">安培(A)</td></tr>
+<td><input type="text"  name="totalamp2201" style=width:50px disabled="disabled">安培(A)</td></tr>
 <td colspan="2">總電流含安全值(單相220V)：</td>
-<td><input type="number"  maxlength="5" name="totalamp2201s" disabled="disabled">安培(A)</td></tr>
+<td><input type="text"  name="totalamp2201s" style=width:50px disabled="disabled">安培(A)</td></tr>
 <td colspan="2">總電流(三相220V)：</td>
-<td><input type="number"  maxlength="5" name="totalamp2203" disabled="disabled">安培(A)</td></tr>
+<td><input type="text"  name="totalamp2203" style=width:50px disabled="disabled">安培(A)</td></tr>
 <td colspan="2">總電流含安全值(三相220V)：</td>
-<td><input type="number"  maxlength="5" name="totalamp2203s" disabled="disabled">安培(A)</td></tr>
+<td><input type="text"  name="totalamp2203s" style=width:50px disabled="disabled">安培(A)</td></tr>
 <td colspan="2">總電流(三相380V)：</td>
-<td><input type="number"  maxlength="5" name="totalamp3803" disabled="disabled">安培(A)</td></tr>
+<td><input type="text"  name="totalamp3803" style=width:50px disabled="disabled">安培(A)</td></tr>
 <td colspan="2">總電流含安全值(三相380V)：</td>
-<td><input type="number"  maxlength="5" name="totalamp3803s" disabled="disabled">安培(A)</td></tr>
+<td><input type="text"  name="totalamp3803s" style=width:50px disabled="disabled">安培(A)</td></tr>
 </form>
 <form name="form2">
 <table bgcolor="#eeeeff" border="0" cellspacing="1" cellpadding="8">
 <tbody>
 <tr bgcolor="#FFFFFF">
 <td colspan="2">寬度：</td>
-<td><input type="number"  maxlength="5" name="widthcm">公分(CM)</td></tr><tr bgcolor="#FFFFFF">
+<td><input type="number"  name="widthcm" style=width:70px>公分(CM)</td></tr><tr bgcolor="#FFFFFF">
 <td colspan="2">高度：</td>
-<td><input type="number"  maxlength="5" name="hightcm" onkeyup="inch.value= Math.sqrt((this.value * this.value) + (widthcm.value * widthcm.value))/2.54 ">公分(CM)</td></tr>
+<td><input type="number"  name="hightcm" style=width:70px onkeyup="inch.value= Math.floor((Math.sqrt((this.value * this.value) + (widthcm.value * widthcm.value))/2.54)*100)/100 ">公分(CM)</td></tr>
 <td colspan="2">吋數：</td>
-<td><input type="number"  maxlength="5" name="inch" disabled="disabled">吋</td></tr>
+<td><input type="text"  name="inch" style=width:70px disabled="disabled">吋</td></tr>
 </form>
 </center>
