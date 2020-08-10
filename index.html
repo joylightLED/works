@@ -24,14 +24,14 @@
       <div class="row">
         <div class="col-md-12">
           <ul class="nav nav-pills">
-            <li class="nav-item"> <a href="" class="nav-link active" data-toggle="pill" data-target="#tabone">電流及功率計算</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">尺寸換算</a> </li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabone">電流及功率計算</a> </li>
+            <li class="nav-item"> <a class="nav-link active" href="" data-toggle="pill" data-target="#tabtwo">尺寸換算</a> </li>
             <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">接收卡選型</a> </li>
           </ul>
           <div class="tab-content mt-2">
-            <div class="tab-pane fade active show" id="tabone" role="tabpanel">
+            <div class="tab-pane fade" id="tabone" role="tabpanel">
               <div class="table-responsive">
-                <center><input type="number" id="watt" class="text-center" placeholder="輸入單片瓦數"><input type="number" id="nums" class="text-center" placeholder="輸入模組數量" onkeyup="totalwatt.value= Math.floor((this.value * watt.value)*100)/100; totalamp110.value= Math.floor((totalwatt.value/110)*100)/100; totalamp2201.value= Math.floor((totalwatt.value/220)*100)/100; totalamp2203.value= Math.floor((totalwatt.value/220/1.732)*100)/100; totalamp3803.value= Math.floor((totalwatt.value/380/1.732)*100)/100; totalamp110s.value= Math.floor((totalwatt.value/110*1.3)*100)/100; totalamp2201s.value= Math.floor((totalwatt.value/220*1.3)*100)/100; totalamp2203s.value= Math.floor((totalwatt.value/220/1.732*1.3)*100)/100; totalamp3803s.value= Math.floor((totalwatt.value/380/1.732*1.3)*100)/100;"><input type="number" id="totalwatt" disabled="disabled" placeholder="總瓦數" class="text-center"></center>
+                <center>輸入單片瓦數<input type="number" id="watt" class="text-center">瓦<br>輸入模組數量<input type="number" id="nums" class="text-center" onkeyup="totalwatt.value= Math.floor((this.value * watt.value)*100)/100; totalamp110.value= Math.floor((totalwatt.value/110)*100)/100; totalamp2201.value= Math.floor((totalwatt.value/220)*100)/100; totalamp2203.value= Math.floor((totalwatt.value/220/1.732)*100)/100; totalamp3803.value= Math.floor((totalwatt.value/380/1.732)*100)/100; totalamp110s.value= Math.floor((totalwatt.value/110*1.3)*100)/100; totalamp2201s.value= Math.floor((totalwatt.value/220*1.3)*100)/100; totalamp2203s.value= Math.floor((totalwatt.value/220/1.732*1.3)*100)/100; totalamp3803s.value= Math.floor((totalwatt.value/380/1.732*1.3)*100)/100;">片<br>總瓦數<input type="number" id="totalwatt" disabled="disabled" class="text-center">瓦</center>
                 <table class="table table-striped table-borderless">
                   <thead>
                     <tr>
@@ -66,9 +66,9 @@
               </div>
               <p class=""></p>
             </div>
-            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+            <div class="tab-pane fade active show" id="tabtwo" role="tabpanel">
               <div class="table-responsive">
-                <center><input type="number" id="widthcm" class="text-center" placeholder="輸入寬度(公分)"><input type="number" id="hightcm" class="text-center" placeholder="輸入高度(公分)" onkeyup="inch.value= Math.floor((Math.sqrt((this.value * this.value) + (widthcm.value * widthcm.value))/2.54)*100)/100 "><input type="number" id="inch" disabled="disabled" placeholder="吋數" class="text-center"><br><input type="number" maxlength="5" id="cm2inch" onkeyup="inch2cm.value=2.54 * this.value; len43.value=Math.floor((this.value*2.54/5*3)*100)/100 ; wid43.value=Math.floor((this.value*2.54/5*4)*100)/100; len54.value=Math.floor((this.value*2.54/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value*2.54/6.403124*5)*100)/100; len169.value=Math.floor((this.value*2.54/18.35756*9)*100)/100; wid169.value=Math.floor((this.value*2.54/18.35756*16)*100)/100; len1610.value=Math.floor((this.value*2.54/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value*2.54/18.86796*16)*100)/100; len219.value=Math.floor((this.value*2.54/22.84732*9)*100)/100; wid219.value=Math.floor((this.value*2.54/22.84732*21)*100)/100;" placeholder="輸入吋數" class="text-center"><input type="number" maxlength="5" id="inch2cm" onkeyup="cm2inch.value=0.3937 * this.value; len43.value=Math.floor((this.value/5*3)*100)/100; wid43.value=Math.floor((this.value/5*4)*100)/100; len54.value=Math.floor((this.value/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value/6.403124*5)*100)/100; len169.value=Math.floor((this.value/18.35756*9)*100)/100; wid169.value=Math.floor((this.value/18.35756*16)*100)/100; len1610.value=Math.floor((this.value/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value/18.86796*16)*100)/100; len219.value=Math.floor((this.value/22.84732*9)*100)/100; wid219.value=Math.floor((this.value/22.84732*21)*100)/100;" placeholder="輸入對角線長度(公分)" class="text-center"></center>
+                <center>輸入寬度(公分)<input type="number" id="widthcm" class="text-center"><br>輸入高度(公分)<input type="number" id="hightcm" class="text-center" onkeyup="inch.value= Math.floor((Math.sqrt((this.value * this.value) + (widthcm.value * widthcm.value))/2.54)*100)/100 "><br>吋數<input type="number" id="inch" disabled="disabled" class="text-center"><br>輸入吋數<input type="number" maxlength="5" id="cm2inch" onkeyup="inch2cm.value=2.54 * this.value; len43.value=Math.floor((this.value*2.54/5*3)*100)/100 ; wid43.value=Math.floor((this.value*2.54/5*4)*100)/100; len54.value=Math.floor((this.value*2.54/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value*2.54/6.403124*5)*100)/100; len169.value=Math.floor((this.value*2.54/18.35756*9)*100)/100; wid169.value=Math.floor((this.value*2.54/18.35756*16)*100)/100; len1610.value=Math.floor((this.value*2.54/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value*2.54/18.86796*16)*100)/100; len219.value=Math.floor((this.value*2.54/22.84732*9)*100)/100; wid219.value=Math.floor((this.value*2.54/22.84732*21)*100)/100;" class="text-center"><br>輸入對角線長度(公分)<input type="number" maxlength="5" id="inch2cm" onkeyup="cm2inch.value=0.3937 * this.value; len43.value=Math.floor((this.value/5*3)*100)/100; wid43.value=Math.floor((this.value/5*4)*100)/100; len54.value=Math.floor((this.value/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value/6.403124*5)*100)/100; len169.value=Math.floor((this.value/18.35756*9)*100)/100; wid169.value=Math.floor((this.value/18.35756*16)*100)/100; len1610.value=Math.floor((this.value/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value/18.86796*16)*100)/100; len219.value=Math.floor((this.value/22.84732*9)*100)/100; wid219.value=Math.floor((this.value/22.84732*21)*100)/100;" class="text-center"></center>
                 <table class="table table-striped table-borderless">
                   <thead>
                     <tr>
@@ -109,7 +109,23 @@
               <p class=""></p>
             </div>
             <div class="tab-pane fade" id="tabthree" role="tabpanel">
-              <p class="">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy.</p>
+              <ul class="nav nav-tabs">
+                <li class="nav-item"> <a href="" class="nav-link active" data-toggle="tab" data-target="#tabone">諾瓦</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="" data-toggle="tab" data-target="#tabtwo">卡萊特</a> </li>
+                <li class="nav-item"> <a href="" class="nav-link" data-toggle="tab" data-target="#tabthree">灰度</a> </li>
+              </ul>
+              <div class="tab-content mt-2">
+                <div class="tab-pane fade show active" id="tabone" role="tabpanel">
+                  <p class="">When I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms.</p>
+                </div>
+                <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+                  <p class="">Who formed us in his own image, and the breath of that universal love which bears and sustains us. And then, my friend.</p>
+                </div>
+                <div class="tab-pane fade" id="tabthree" role="tabpanel">
+                  <p class="">In my soul and absorb its power, like the form of a beloved mistress, then I often think with longing.</p>
+                </div>
+              </div>
+              <p class="">&nbsp;</p>
             </div>
           </div>
         </div>
