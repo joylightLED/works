@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="theme.css" type="text/css">
+</head>
+
+<body>
+  <div class="py-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center">喬光LED小助手&nbsp;<small class="text-muted">2020-8-10更新</small></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="nav nav-pills">
+            <li class="nav-item"> <a href="" class="nav-link active" data-toggle="pill" data-target="#tabone">電流及功率計算</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">尺寸換算</a> </li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">Tab 3</a> </li>
+          </ul>
+          <div class="tab-content mt-2">
+            <div class="tab-pane fade active show" id="tabone" role="tabpanel">
+              <div class="table-responsive">
+                <center><input type="number" id="watt" class="text-center" placeholder="輸入單片瓦數"><input type="number" id="nums" class="text-center" placeholder="輸入模組數量" onkeyup="totalwatt.value= Math.floor((this.value * watt.value)*100)/100; totalamp110.value= Math.floor((totalwatt.value/110)*100)/100; totalamp2201.value= Math.floor((totalwatt.value/220)*100)/100; totalamp2203.value= Math.floor((totalwatt.value/220/1.732)*100)/100; totalamp3803.value= Math.floor((totalwatt.value/380/1.732)*100)/100; totalamp110s.value= Math.floor((totalwatt.value/110*1.3)*100)/100; totalamp2201s.value= Math.floor((totalwatt.value/220*1.3)*100)/100; totalamp2203s.value= Math.floor((totalwatt.value/220/1.732*1.3)*100)/100; totalamp3803s.value= Math.floor((totalwatt.value/380/1.732*1.3)*100)/100;"><input type="number" id="totalwatt" disabled="disabled" placeholder="總瓦數" class="text-center"></center>
+                <table class="table table-striped table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">總電流</th>
+                      <th scope="col">含安全值</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">110V</th>
+                      <td><input type="number" id="totalamp110" disabled="disabled" style="width:70px">安培</td>
+                      <td><input type="number" id="totalamp110s" disabled="disabled" style="width:70px">安培</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">單相220V</th>
+                      <td><input type="number" id="totalamp2201" disabled="disabled" style="width:70px">安培</td>
+                      <td><input type="number" id="totalamp2201s" disabled="disabled" style="width:70px">安培</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">三相220V<br></th>
+                      <td><input type="number" id="totalamp2203" disabled="disabled" style="width:70px">安培</td>
+                      <td><input type="number" id="totalamp2203s" disabled="disabled" style="width:70px">安培</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">三相380V<br></th>
+                      <td><input type="number" id="totalamp3803" disabled="disabled" style="width:70px">安培</td>
+                      <td><input type="number" id="totalamp3803s" disabled="disabled" style="width:70px">安培</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class=""></p>
+            </div>
+            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+              <div class="table-responsive">
+                <center><input type="number" id="widthcm" class="text-center" placeholder="輸入寬度(公分)"><input type="number" id="hightcm" class="text-center" placeholder="輸入高度(公分)" onkeyup="inch.value= Math.floor((Math.sqrt((this.value * this.value) + (widthcm.value * widthcm.value))/2.54)*100)/100 "><input type="number" id="inch" disabled="disabled" placeholder="吋數" class="text-center"><br><input type="number" maxlength="5" id="cm2inch" onkeyup="inch2cm.value=2.54 * this.value; len43.value=Math.floor((this.value*2.54/5*3)*100)/100 ; wid43.value=Math.floor((this.value*2.54/5*4)*100)/100; len54.value=Math.floor((this.value*2.54/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value*2.54/6.403124*5)*100)/100; len169.value=Math.floor((this.value*2.54/18.35756*9)*100)/100; wid169.value=Math.floor((this.value*2.54/18.35756*16)*100)/100; len1610.value=Math.floor((this.value*2.54/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value*2.54/18.86796*16)*100)/100; len219.value=Math.floor((this.value*2.54/22.84732*9)*100)/100; wid219.value=Math.floor((this.value*2.54/22.84732*21)*100)/100;" placeholder="輸入吋數" class="text-center"><input type="number" maxlength="5" id="inch2cm" onkeyup="cm2inch.value=0.3937 * this.value; len43.value=Math.floor((this.value/5*3)*100)/100; wid43.value=Math.floor((this.value/5*4)*100)/100; len54.value=Math.floor((this.value/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value/6.403124*5)*100)/100; len169.value=Math.floor((this.value/18.35756*9)*100)/100; wid169.value=Math.floor((this.value/18.35756*16)*100)/100; len1610.value=Math.floor((this.value/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value/18.86796*16)*100)/100; len219.value=Math.floor((this.value/22.84732*9)*100)/100; wid219.value=Math.floor((this.value/22.84732*21)*100)/100;" placeholder="輸入對角線長度(公分)" class="text-center"></center>
+                <table class="table table-striped table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">比例</th>
+                      <th scope="col">寬度</th>
+                      <th scope="col">高度</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">4:3</th>
+                      <td><input type="number" id="wid43" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len43" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5:4</th>
+                      <td><input type="number" id="wid54" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len54" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">16:9<br></th>
+                      <td><input type="number" id="wid169" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len169" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">16:10<br></th>
+                      <td><input type="number" id="wid1610" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len1610" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" contenteditable="true">21:9<br></th>
+                      <td><input type="number" id="wid219" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len219" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class=""></p>
+            </div>
+            <div class="tab-pane fade" id="tabthree" role="tabpanel">
+              <p class="">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2020 JoyLight. All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
+</body>
+
+</html>
