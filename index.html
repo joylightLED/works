@@ -30,7 +30,7 @@
           </ul>
           <div class="tab-content mt-2">
             <div class="tab-pane fade active show" id="tabone" role="tabpanel">
-              <div class="table-responsive"> 輸入單片瓦數<input type="number" inputmode="numeric" id="watt" class="text-center" style="width:70px">瓦<br>輸入模組數量<input type="number" inputmode="numeric" id="nums" class="text-center" onkeyup="totalwatt.value= Math.floor((this.value * watt.value)*100)/100; totalamp110.value= Math.floor((totalwatt.value/110)*100)/100; totalamp2201.value= Math.floor((totalwatt.value/220)*100)/100; totalamp2203.value= Math.floor((totalwatt.value/220/1.732)*100)/100; totalamp3803.value= Math.floor((totalwatt.value/380/1.732)*100)/100; totalamp110s.value= Math.floor((totalwatt.value/110*1.3)*100)/100; totalamp2201s.value= Math.floor((totalwatt.value/220*1.3)*100)/100; totalamp2203s.value= Math.floor((totalwatt.value/220/1.732*1.3)*100)/100; totalamp3803s.value= Math.floor((totalwatt.value/380/1.732*1.3)*100)/100;" style="width:70px">片<br>總瓦數<input type="number" id="totalwatt" disabled="disabled" class="text-center" style="width:70px">瓦 <table class="table table-striped table-borderless">
+              <div class="table-responsive"> 輸入單片瓦數<input type="number" id="watt" class="text-center" style="width:70px">瓦<br>輸入模組數量<input type="number" id="nums" class="text-center" onkeyup="totalwatt.value= Math.floor((this.value * watt.value)*100)/100; totalamp110.value= Math.floor((totalwatt.value/110)*100)/100; totalamp2201.value= Math.floor((totalwatt.value/220)*100)/100; totalamp2203.value= Math.floor((totalwatt.value/220/1.732)*100)/100; totalamp3803.value= Math.floor((totalwatt.value/380/1.732)*100)/100; totalamp110s.value= Math.floor((totalwatt.value/110*1.3)*100)/100; totalamp2201s.value= Math.floor((totalwatt.value/220*1.3)*100)/100; totalamp2203s.value= Math.floor((totalwatt.value/220/1.732*1.3)*100)/100; totalamp3803s.value= Math.floor((totalwatt.value/380/1.732*1.3)*100)/100;" style="width:70px">片<br>總瓦數<input type="number" id="totalwatt" disabled="disabled" class="text-center" style="width:70px">瓦 <table class="table table-striped table-borderless">
                   <thead>
                     <tr>
                       <th scope="col"></th>
@@ -65,7 +65,7 @@
               <p class=""></p>
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-              <div class="table-responsive"> 輸入寬度(公分)<input type="number" inputmode="numeric" id="widthcm" class="text-center" style="width:70px"><br>輸入高度(公分)<input type="number" inputmode="numeric" id="hightcm" class="text-center" onkeyup="inch.value= Math.floor((Math.sqrt((this.value * this.value) + (widthcm.value * widthcm.value))/2.54)*100)/100 " style="width:70px"><br>吋數<input type="number" id="inch" disabled="disabled" class="text-center" style="width:70px"><br>輸入吋數<input type="number" inputmode="numeric" maxlength="5" id="cm2inch" onkeyup="inch2cm.value=2.54 * this.value; len43.value=Math.floor((this.value*2.54/5*3)*100)/100 ; wid43.value=Math.floor((this.value*2.54/5*4)*100)/100; len54.value=Math.floor((this.value*2.54/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value*2.54/6.403124*5)*100)/100; len169.value=Math.floor((this.value*2.54/18.35756*9)*100)/100; wid169.value=Math.floor((this.value*2.54/18.35756*16)*100)/100; len1610.value=Math.floor((this.value*2.54/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value*2.54/18.86796*16)*100)/100; len219.value=Math.floor((this.value*2.54/22.84732*9)*100)/100; wid219.value=Math.floor((this.value*2.54/22.84732*21)*100)/100;" class="text-center" style="width:70px"><br>輸入對角線長度(公分)<input type="number" inputmode="numeric" maxlength="5" id="inch2cm" onkeyup="cm2inch.value=0.3937 * this.value; len43.value=Math.floor((this.value/5*3)*100)/100; wid43.value=Math.floor((this.value/5*4)*100)/100; len54.value=Math.floor((this.value/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value/6.403124*5)*100)/100; len169.value=Math.floor((this.value/18.35756*9)*100)/100; wid169.value=Math.floor((this.value/18.35756*16)*100)/100; len1610.value=Math.floor((this.value/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value/18.86796*16)*100)/100; len219.value=Math.floor((this.value/22.84732*9)*100)/100; wid219.value=Math.floor((this.value/22.84732*21)*100)/100;" class="text-center" style="width:70px">
+              <div class="table-responsive"> 輸入寬度(公分)<input type="number" id="widthcm" class="text-center" style="width:70px"><br>輸入高度(公分)<input type="number" id="hightcm" class="text-center" onkeyup="inch.value= Math.floor((Math.sqrt((this.value * this.value) + (widthcm.value * widthcm.value))/2.54)*100)/100 " style="width:70px"><br>吋數<input type="number" id="inch" disabled="disabled" class="text-center" style="width:70px"><br>輸入吋數<input type="number" maxlength="5" id="cm2inch" onkeyup="inch2cm.value=2.54 * this.value; len43.value=Math.floor((this.value*2.54/5*3)*100)/100 ; wid43.value=Math.floor((this.value*2.54/5*4)*100)/100; len54.value=Math.floor((this.value*2.54/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value*2.54/6.403124*5)*100)/100; len169.value=Math.floor((this.value*2.54/18.35756*9)*100)/100; wid169.value=Math.floor((this.value*2.54/18.35756*16)*100)/100; len1610.value=Math.floor((this.value*2.54/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value*2.54/18.86796*16)*100)/100; len219.value=Math.floor((this.value*2.54/22.84732*9)*100)/100; wid219.value=Math.floor((this.value*2.54/22.84732*21)*100)/100;" class="text-center" style="width:70px"><br>輸入對角線長度(公分)<input type="number" maxlength="5" id="inch2cm" onkeyup="cm2inch.value=0.3937 * this.value; len43.value=Math.floor((this.value/5*3)*100)/100; wid43.value=Math.floor((this.value/5*4)*100)/100; len54.value=Math.floor((this.value/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value/6.403124*5)*100)/100; len169.value=Math.floor((this.value/18.35756*9)*100)/100; wid169.value=Math.floor((this.value/18.35756*16)*100)/100; len1610.value=Math.floor((this.value/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value/18.86796*16)*100)/100; len219.value=Math.floor((this.value/22.84732*9)*100)/100; wid219.value=Math.floor((this.value/22.84732*21)*100)/100;" class="text-center" style="width:70px">
                 <table class="table table-striped table-borderless">
                   <thead>
                     <tr>
@@ -115,26 +115,30 @@
                 </ul>
                 <div class="tab-content mt-2">
                   <div class="tab-pane fade show active" id="tabone2" role="tabpanel" style="">
+                    <ul class="nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">型號選擇</a>
+                        <div class="dropdown-menu" style="">
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#tabone3">MRV328</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#tabtwo3">MRV336</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#tabthree3">MRV366</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl600">MCTRL600</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl660">MCTRL660</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl660pro">MCTRL660 PRO</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl700">MCTRL700</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl1600">MCTRL1600</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#v700">V700</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#v760">V760</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#v900">V900</a>
+                          <a class="dropdown-item" data-target="#v960" data-toggle="pill" href="">V960</a>
+                          <a class="dropdown-item" data-target="#v1060" data-toggle="pill" href="">V1060</a>
+                          <a class="dropdown-item" href="" data-target="#v1260" data-toggle="pill">V1260</a>
+                          <div class="dropdown-divider"></div>
+                        </div>
+                      </li>
+                    </ul>
                     <div class="row  pi-draggable" draggable="true">
-                      <div class="col-3">
-                        <ul class="nav nav-pills flex-column">
-                          <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone3">MRV328</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo3">MRV336</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree3">MRV366</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#mctrl600">MCTRL600</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#mctrl660">MCTRL660</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#mctrl660pro">MCTRL660 PRO</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#mctrl700">MCTRL700</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#mctrl1600">MCTRL1600</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#v700">V700</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#v760">V760</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#v900">V900</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#v960">V960</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#v1060">V1060</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#v1260">V1260</a> </li>
-                        </ul>
-                      </div>
-                      <div class="col-9">
+                      <div class="col-12">
                         <div class="tab-content">
                           <div class="tab-pane fade show active" id="tabone3" role="tabpanel">
                             <div class="table-responsive pi-draggable" draggable="true">
@@ -780,15 +784,19 @@
                     <p class=""></p>
                   </div>
                   <div class="tab-pane fade" id="tabtwo2" role="tabpanel">
+                    <ul class="nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">型號選擇</a>
+                        <div class="dropdown-menu" style="">
+                          <a class="dropdown-item" data-target="#tabone4" data-toggle="pill" href="">i5A-F</a>
+                          <a class="dropdown-item" data-target="#tabtwo4" data-toggle="pill" href="">5A-75B</a>
+                          <a class="dropdown-item" href="" data-target="#tabthree4" data-toggle="pill">5A-75E</a>
+                          <div class="dropdown-divider"></div>
+                        </div>
+                      </li>
+                    </ul>
                     <div class="row  pi-draggable" draggable="true">
-                      <div class="col-3">
-                        <ul class="nav nav-pills flex-column">
-                          <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone4">i5A-F</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo4">5A-75B</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree4">5A-75E</a> </li>
-                        </ul>
-                      </div>
-                      <div class="col-9">
+                      <div class="col-12">
                         <div class="tab-content">
                           <div class="tab-pane fade show active" id="tabone4" role="tabpanel">
                             <div class="table-responsive pi-draggable" draggable="true">
@@ -901,23 +909,27 @@
                     <p class=""></p>
                   </div>
                   <div class="tab-pane fade" id="tabthree2" role="tabpanel">
+                    <ul class="nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">型號選擇</a>
+                        <div class="dropdown-menu" style="">
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#c15">C15</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#c15c">C15C</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#c35">C35</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#c35c">C35C</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#d15">D15</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#d35">D35</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r500">R500</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r508">R508</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r512">R512</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r516">R516</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r612">R612</a>
+                          <div class="dropdown-divider"></div>
+                        </div>
+                      </li>
+                    </ul>
                     <div class="row  pi-draggable" draggable="true">
-                      <div class="col-3">
-                        <ul class="nav nav-pills flex-column">
-                          <li class="nav-item"> <a class="active nav-link" href="" data-toggle="pill" data-target="#c15">C15</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#c15c">C15C</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#c35">C35</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#c35c">C35C</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#d15">D15</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#d35">D35</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#r500">R500</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#r508">R508</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#r512">R512</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#r516">R516</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#r612">R612</a> </li>
-                        </ul>
-                      </div>
-                      <div class="col-9">
+                      <div class="col-12">
                         <div class="tab-content">
                           <div class="tab-pane fade" id="d15" role="tabpanel">
                             <div class="table-responsive pi-draggable" draggable="true">
@@ -1226,19 +1238,23 @@
                     <p class=""></p>
                   </div>
                   <div class="tab-pane fade" id="lm" role="tabpanel" style="">
+                    <ul class="nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">型號選擇</a>
+                        <div class="dropdown-menu" style="">
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm10b">10B</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm20a">20A</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm50a">50A</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm1200">1200</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm2200">2200</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm3200">3200</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm5200">5200</a>
+                          <div class="dropdown-divider"></div>
+                        </div>
+                      </li>
+                    </ul>
                     <div class="row  pi-draggable" draggable="true">
-                      <div class="col-3">
-                        <ul class="nav nav-pills flex-column">
-                          <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#lm10b">10B</a> </li>
-                          <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#lm20a">20A</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#lm50a">50A</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#lm1200">1200</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#lm2200">2200</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#lm3200">3200</a> </li>
-                          <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#lm5200">5200</a> </li>
-                        </ul>
-                      </div>
-                      <div class="col-9">
+                      <div class="col-12">
                         <div class="tab-content">
                           <div class="tab-pane fade show active" id="lm10b" role="tabpanel">
                             <div class="table-responsive pi-draggable" draggable="true">
@@ -1405,7 +1421,7 @@
                           <div class="tab-pane fade" id="lm5200" role="tabpanel">
                             <div class="table-responsive pi-draggable" draggable="true">
                               <table class="table table-bordered">
-                                <thead class="thead-dark">
+                                <thead class="thead-dark" style="">
                                   <tr>
                                     <th>型號</th>
                                     <th>C-Power5200</th>
