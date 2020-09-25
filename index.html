@@ -1849,6 +1849,7 @@
 	  liffId: liffID
 	}).then(function() {
 	  console.log('LIFF init');
+	  isLoggedIn = liff.isLoggedIn(); // Boolean。使用者是否登入 LINE 帳號。true 時，可呼叫需要 Access Token 的 API
 	  if(!isLoggedIn) {
           liff.login({
             redirectUri: 'https://joylightled.github.io/works/'
