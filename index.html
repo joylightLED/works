@@ -1849,6 +1849,11 @@
 	  liffId: liffID
 	}).then(function() {
 	  console.log('LIFF init');
+	  if(!isLoggedIn) {
+          liff.login({
+            redirectUri: 'https://joylightled.github.io/works/'
+          });
+        }
 	  liff.getProfile()
 		.then(function(profile) {
 		console.log(profile);
