@@ -10,11 +10,15 @@
         <link rel="icon" href="https://raw.githubusercontent.com/joylightLED/works/master/joylight.ico">
     </head>
     <script>
-        $(window).on('load', function () {
-  			liff.init(function (data) {
- 				liff.getProfile().then(profile=>{
-      				document.getElementById("user-name").innerHTML = profile.displayName;
- 					}}};
+    $(window).on('load', function () {
+      liff.init(function (data) {
+     liff.getProfile().then(profile=>{
+          document.getElementById("user-name").innerHTML = profile.displayName;
+          document.getElementById("user-desc").innerHTML = profile.statusMessage;
+          document.getElementById("user-id").innerHTML = profile.userId;
+          $('#user-img').attr('src',profile.pictureUrl);
+     	  }}
+    });
     </script>
     <body>
         <nav class="navbar navbar-dark bg-primary">
