@@ -16,7 +16,7 @@
     <div class="container d-flex justify-content-center"> <a class="navbar-brand" href="#">
         <i class="fa fa-calculator"></i>
         <b> 喬光LED小助手</b>
-      </a> </div>
+      </a><h5 class="card-title text-center" id="user-name"></h5> </div>
   </nav>
   <div class="py-1">
     <div class="container">
@@ -1843,6 +1843,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
   <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
   <script>
+  $(window).on('load', function () {
   liff.init({ 
       liffId: '1654981891-k2NAqmL5' // 填上你的LIFF ID (必填)
     }).then(() => {
@@ -1850,6 +1851,7 @@
     }).catch(error => {
       // Error Callback
     })
+	});
   </script>
 </body>
 
