@@ -1860,6 +1860,11 @@
 		document.getElementById("user-name").innerHTML = profile.displayName;
 		console.log(profile);
     });
+	if(profile.userId == Udd4bab227078a8cd989596b0bfbe8696){
+		  alert('很抱歉，您沒有權限！');	
+          liff.logout();
+          window.location.reload(); // 登出後重整一次頁面
+	}
 	  // 這邊開始寫使用其他功能
 	  
 	}).catch(function(error) {
