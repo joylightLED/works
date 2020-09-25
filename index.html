@@ -1850,6 +1850,7 @@
 	}).then(function() {
 	  console.log('LIFF init');
 	  isLoggedIn = liff.isLoggedIn(); // Boolean。使用者是否登入 LINE 帳號。true 時，可呼叫需要 Access Token 的 API
+	  isInClient = liff.isInClient(); // Boolean。回傳是否由 LINE App 存取
 	  if(!isLoggedIn) {
           liff.login({
             redirectUri: 'https://joylightled.github.io/works/'
@@ -1862,8 +1863,9 @@
 		if(profile.userId != "Udd4bab227078a8cd989596b0bfbe8696"){
 		  alert('很抱歉，您沒有權限！\n請將ID截圖告知管理員\n'+profile.userId);	
           liff.logout();
-		  liff.closeWindow();
-          window.location.reload(); // 登出後重新整理
+		  if(isInClient) {
+			liff.closeWindow();
+		  }
 		}
     });
 	  // 這邊開始寫使用其他功能
