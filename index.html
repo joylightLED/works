@@ -1859,10 +1859,10 @@
 		.then(function(profile) {
 		document.getElementById("user-name").innerHTML = profile.displayName;
 		console.log(profile);
-		if(profile.userId != "Udd4bab227078a8cd989596b0bfbe8696+"){
+		if(profile.userId != "Udd4bab227078a8cd989596b0bfbe8696" || profile.userId != "Ucbc19e82e409bb59a99bd124e98cc0fd"){
 		  alert('很抱歉，您沒有權限！');	
           liff.logout();
-          self.location.href="https://joylightled.github.io/works/error.html"; // 登出後重整一次頁面
+          self.location.href="https://joylightled.github.io/works/error.html"; // 登出後跳轉到無權限頁面
 		}
     });
 	  // 這邊開始寫使用其他功能
