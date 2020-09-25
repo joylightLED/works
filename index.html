@@ -11,11 +11,10 @@
     </head>
     <script>
         $(window).on('load', function () {
-  liff.init(function (data) {
- liff.getProfile().then(profile=>{
-      document.getElementById("user-name").innerHTML = profile.displayName;
-
-});
+  			liff.init(function (data) {
+ 				liff.getProfile().then(profile=>{
+      				document.getElementById("user-name").innerHTML = profile.displayName;
+ 					}}};
     </script>
     <body>
         <nav class="navbar navbar-dark bg-primary">
