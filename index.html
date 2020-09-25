@@ -10,17 +10,18 @@
         <link rel="icon" href="https://raw.githubusercontent.com/joylightLED/works/master/joylight.ico">
     </head>
     <script>
-    $(window).on('load', function () {
-  		liff.init(function (data) {
- 			liff.getProfile().then(profile=>{
-    			document.getElementById("user-name").innerHTML = profile.displayName;}
-            }
-                                   });
+        $(window).on('load', function () {
+  liff.init(function (data) {
+ liff.getProfile().then(profile=>{
+      document.getElementById("user-name").innerHTML = profile.displayName;
+
+});
     </script>
     <body>
         <nav class="navbar navbar-dark bg-primary">
             <div class="container d-flex justify-content-center"> 
-                <a class="navbar-brand" href="#"> <i class="fa fa-calculator"></i> <b> 喬光LED小助手</b> </a> <h5 class="card-title text-center" id="user-name"> </h5>
+                <a class="navbar-brand" href="#"> <i class="fa fa-calculator"></i> <b> 喬光LED小助手</b> </a> 
+                <h5 class="card-title text-center" id="user-name"> </h5>
             </div>
         </nav>
         <div class="py-1">
