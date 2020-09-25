@@ -1862,6 +1862,7 @@
 		if(profile.userId != "Udd4bab227078a8cd989596b0bfbe8696"){
 		  alert('很抱歉，您沒有權限！\n請將ID截圖告知管理員\n'+profile.userId);	
           liff.logout();
+		  liff.closeWindow();
           window.location.reload(); // 登出後重新整理
 		}
     });
