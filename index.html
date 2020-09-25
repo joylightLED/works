@@ -1857,6 +1857,7 @@
         }
 	  liff.getProfile()
 		.then(function(profile) {
+		document.getElementById("user-name").innerHTML = profile.displayName;
 		console.log(profile);
     });
 	  // 這邊開始寫使用其他功能
