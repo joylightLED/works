@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="theme.css" type="text/css">
+  <title>喬光LED小助手</title>
+  <meta name="description" content="協助計算電流、尺寸換算、查看常用控制系統規格">
+  <link rel="icon" href="https://raw.githubusercontent.com/joylightLED/works/master/joylight.ico">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container d-flex justify-content-center"> <a class="navbar-brand" href="#">
+        <i class="fa fa-calculator"></i>
+        <b> 喬光LED小助手</b><!--<br><h7 class="card-title text-center" id="user-name"></h7><h7>，歡迎使用</h7></br>-->
+      </a> </div>
+  </nav>
+  輸入客戶名稱：<input type="text" id="uid" />
+<input type="button" name="inq" value="查詢" onclick="showHint(uid.value);"></br>
+
+<span id="order_status"></span>
+  <div class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2020 JoyLight. All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
+  <script type="text/javascript">
+function showHint(str)
+{
+var xmlhttp;
+
+        if (window.XMLHttpRequest)
+          {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+          }
+        else
+          {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+        xmlhttp.onreadystatechange=function()
+          {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)      
+                  {
+                        var result=xmlhttp.responseText;
+                        var obj = JSON.parse(result);//解析json字串為json物件形式
+                                                
+                        var html = '<table border=1 width=100%>';//
+                        
+                        for (var i = 0; i < obj.length; i ++ ) {//
+                                html  += '<tr>';//
+                                for(j=0;j<obj[i].data.length;j++)
+                                {
+                                  html+= '<td>'+obj[i].data[j]+'</td>';
+                                }
+                                html  += '</tr>';            
+                        }
+                        html+="</table>";
+                        
+                        document.getElementById("order_status").innerHTML=html;
+                        if(obj.length==1) //只有一筆代表查不到資料
+                                alert('查無資料');
+                  }
+
+          }
+    var url="https://script.google.com/macros/s/AKfycbwJOajAYKRM77CELpG5bf5koUbY-TdN24apUJfo22FLsYft9rTP/exec";
+        xmlhttp.open("get",url+"?uid="+str,true);
+        xmlhttp.send();
+}
+</script>
+  <!--<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script>
+	var liffID = '1654981891-k2NAqmL5';
+
+	liff.init({
+	  liffId: liffID
+	}).then(function() {
+	  console.log('LIFF init');
+	  isLoggedIn = liff.isLoggedIn(); // Boolean。使用者是否登入 LINE 帳號。true 時，可呼叫需要 Access Token 的 API
+	  isInClient = liff.isInClient(); // Boolean。回傳是否由 LINE App 存取
+	  if(!isLoggedIn) {
+          liff.login({
+            redirectUri: 'https://joylightled.github.io/works/'
+          });
+        }
+	  liff.getProfile()
+		.then(function(profile) {
+		document.getElementById("user-name").innerHTML = profile.displayName;
+		console.log(profile);
+		if(profile.userId != "Udd4bab227078a8cd989596b0bfbe8696"){
+		  alert('很抱歉，您沒有權限！\n請將ID截圖告知管理員\n'+profile.userId);	
+          liff.logout();
+		  if(isInClient) {
+			liff.closeWindow();
+		  }
+		}
+    });
+	  // 這邊開始寫使用其他功能
+	  
+	}).catch(function(error) {
+	  console.log(error);
+	});
+  </script>-->
+</body>
+
+</html>
