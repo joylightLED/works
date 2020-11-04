@@ -1,14 +1,1879 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="theme.css" type="text/css">
   <title>喬光LED小助手</title>
+  <meta name="description" content="協助計算電流、尺寸換算、查看常用控制系統規格">
   <link rel="icon" href="https://raw.githubusercontent.com/joylightLED/works/master/joylight.ico">
 </head>
+
 <body>
-  <iframe src="https://script.google.com/a/ledjl.com/macros/s/AKfycbzghKujK0xh9YV3MfhC8g14XD2KwLzBsTKevE_emO0xIl9X2l7n/exec" frameborder="0"></iframe>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container d-flex justify-content-center"> <a class="navbar-brand" href="#">
+        <i class="fa fa-calculator"></i>
+        <b> 喬光LED小助手</b><!--<br><h7 class="card-title text-center" id="user-name"></h7><h7>，歡迎使用</h7></br>-->
+      </a> </div>
+  </nav>
+  <div class="py-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="nav nav-pills">
+            <li class="nav-item"> <a href="" class="nav-link active" data-toggle="pill" data-target="#tabone"><i class="fa fa-calculator"></i>電流計算</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo"><i class="fa fa-television"></i>尺寸換算</a> </li>
+            <li class="nav-item" style=""> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree"><i class="fa fa-hdd-o"></i>控卡規格</a> </li>
+          </ul>
+          <div class="tab-content mt-2">
+            <div class="tab-pane fade active show" id="tabone" role="tabpanel">
+              <div class="table-responsive"> 輸入單片瓦數<input type="number" inputmode="numeric" id="watt" class="text-center" style="width:70px">瓦<br>輸入模組數量<input type="number" inputmode="numeric" id="nums" class="text-center" onkeyup="totalwatt.value= Math.floor((this.value * watt.value)*100)/100; totalamp110.value= Math.floor((totalwatt.value/110)*100)/100; totalamp2201.value= Math.floor((totalwatt.value/220)*100)/100; totalamp2203.value= Math.floor((totalwatt.value/220/1.732)*100)/100; totalamp3803.value= Math.floor((totalwatt.value/380/1.732)*100)/100; totalamp110s.value= Math.floor((totalwatt.value/110*1.3)*100)/100; totalamp2201s.value= Math.floor((totalwatt.value/220*1.3)*100)/100; totalamp2203s.value= Math.floor((totalwatt.value/220/1.732*1.3)*100)/100; totalamp3803s.value= Math.floor((totalwatt.value/380/1.732*1.3)*100)/100;" style="width:70px">片<br>總消耗瓦數為<input type="number" id="totalwatt" disabled="disabled" class="text-center" style="width:70px">瓦 <table class="table table-striped table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">總電流</th>
+                      <th scope="col">含安全值</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">110V</th>
+                      <td><input type="number" id="totalamp110" disabled="disabled" style="width:70px">A</td>
+                      <td><input type="number" id="totalamp110s" disabled="disabled" style="width:70px">A</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">單相220V</th>
+                      <td><input type="number" id="totalamp2201" disabled="disabled" style="width:70px" class="">A</td>
+                      <td><input type="number" id="totalamp2201s" disabled="disabled" style="width:70px">A</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">三相220V<br></th>
+                      <td><input type="number" id="totalamp2203" disabled="disabled" style="width:70px">A</td>
+                      <td><input type="number" id="totalamp2203s" disabled="disabled" style="width:70px">A</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">三相380V<br></th>
+                      <td><input type="number" id="totalamp3803" disabled="disabled" style="width:70px">A</td>
+                      <td><input type="number" id="totalamp3803s" disabled="disabled" style="width:70px">A</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class=""></p>
+            </div>
+            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+              <div class="table-responsive"> 輸入寬度<input type="number" inputmode="numeric" id="widthcm" class="text-center" style="width:70px">公分<br>輸入高度<input type="number" inputmode="numeric" id="hightcm" class="text-center" onkeyup="inch.value= Math.floor((Math.sqrt((this.value * this.value) + (widthcm.value * widthcm.value))/2.54)*100)/100 " style="width:70px">公分<br>吋數為<input type="number" id="inch" disabled="disabled" class="text-center" style="width:70px">吋<br>輸入吋數<input type="number" inputmode="numeric" maxlength="5" id="cm2inch" onkeyup="inch2cm.value=2.54 * this.value; len43.value=Math.floor((this.value*2.54/5*3)*100)/100 ; wid43.value=Math.floor((this.value*2.54/5*4)*100)/100; len54.value=Math.floor((this.value*2.54/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value*2.54/6.403124*5)*100)/100; len169.value=Math.floor((this.value*2.54/18.35756*9)*100)/100; wid169.value=Math.floor((this.value*2.54/18.35756*16)*100)/100; len1610.value=Math.floor((this.value*2.54/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value*2.54/18.86796*16)*100)/100; len219.value=Math.floor((this.value*2.54/22.84732*9)*100)/100; wid219.value=Math.floor((this.value*2.54/22.84732*21)*100)/100;" class="text-center" style="width:70px">吋<br>輸入對角線長度<input type="number" inputmode="numeric" maxlength="5" id="inch2cm" onkeyup="cm2inch.value=0.3937 * this.value; len43.value=Math.floor((this.value/5*3)*100)/100; wid43.value=Math.floor((this.value/5*4)*100)/100; len54.value=Math.floor((this.value/6.403124*4)*100)/100 ; wid54.value=Math.floor((this.value/6.403124*5)*100)/100; len169.value=Math.floor((this.value/18.35756*9)*100)/100; wid169.value=Math.floor((this.value/18.35756*16)*100)/100; len1610.value=Math.floor((this.value/18.86796*10)*100)/100; wid1610.value=Math.floor((this.value/18.86796*16)*100)/100; len219.value=Math.floor((this.value/22.84732*9)*100)/100; wid219.value=Math.floor((this.value/22.84732*21)*100)/100;" class="text-center" style="width:70px">公分 <table class="table table-striped table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">比例</th>
+                      <th scope="col">寬度</th>
+                      <th scope="col">高度</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">4:3</th>
+                      <td><input type="number" id="wid43" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len43" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5:4</th>
+                      <td><input type="number" id="wid54" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len54" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">16:9<br></th>
+                      <td><input type="number" id="wid169" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len169" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">16:10<br></th>
+                      <td><input type="number" id="wid1610" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len1610" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" contenteditable="true">21:9<br></th>
+                      <td><input type="number" id="wid219" disabled="disabled" style="width:70px">公分</td>
+                      <td><input type="number" id="len219" disabled="disabled" style="width:70px">公分</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class=""></p>
+            </div>
+            <div class="tab-pane fade" id="tabthree" role="tabpanel">
+              <div class="pi-wrapper pi-draggable" draggable="true">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item"> <a href="" class="active nav-link" data-toggle="tab" data-target="#tabone2">諾瓦</a> </li>
+                  <li class="nav-item"> <a href="" class="nav-link" data-toggle="tab" data-target="#tabtwo2">卡萊特</a> </li>
+                  <li class="nav-item"> <a class="nav-link" href="" data-toggle="tab" data-target="#tabthree2">灰度<br></a> </li>
+                  <li class="nav-item"> <a href="" class="nav-link" data-toggle="tab" data-target="#lm">流明<br></a> </li>
+                </ul>
+                <div class="tab-content mt-2">
+                  <div class="tab-pane fade show active" id="tabone2" role="tabpanel" style="">
+                    <ul class="nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">型號選擇</a>
+                        <div class="dropdown-menu" style="">
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#tabone3">MRV328</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#tabtwo3">MRV336</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#tabthree3">MRV366</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl600">MCTRL600</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl660">MCTRL660</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl660pro">MCTRL660 PRO</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl700">MCTRL700</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#mctrl1600">MCTRL1600</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#v700">V700</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#v760">V760</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#v900">V900</a>
+                          <a class="dropdown-item" data-target="#v960" data-toggle="pill" href="">V960</a>
+                          <a class="dropdown-item" data-target="#v1060" data-toggle="pill" href="">V1060</a>
+                          <a class="dropdown-item" href="" data-target="#v1260" data-toggle="pill">V1260</a>
+                          <div class="dropdown-divider"></div>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="row  pi-draggable" draggable="true">
+                      <div class="col-12">
+                        <div class="tab-content">
+                          <div class="tab-pane fade show active" id="tabone3" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>MRV328</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th>RGB組數</th>
+                                    <td>16組</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75E</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">狀態監控</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">逐點校正</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Mapping</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="tabtwo3" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>MRV336</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x226</td>
+                                  </tr>
+                                  <tr>
+                                    <th>RGB組數</th>
+                                    <td>24組</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75E</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">狀態監控</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">逐點校正</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Mapping</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="mctrl600" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>MCTRL600</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬3840<br>最高3840<br>230萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>4</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DVIx1/HDMIx1<br>音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>無</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="mctrl660" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>MCTRL660</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬3840<br>最高3840<br>230萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>4</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DVIx1/HDMIx1<br>音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>DVIx1/HDMIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="mctrl660pro" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>MCTRL660 PRO</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬3840<br>最高2560<br>230萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>6千兆/2光纖</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DVIx1/HDMIx1/SDIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>DVIx1/HDMIx1/SDIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>HDMIx1</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="mctrl700" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>MCTRL700</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬3840<br>最高3840<br>230萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>6</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DVIx1/HDMIx1/音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>DVIx1/HDMIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="mctrl1600" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>MCTRL1600</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬7680<br>最高7680<br>920萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>16千兆/4光纖</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DPx1/DVIx4</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>無</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="v700" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>V700</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬3840<br>最高1920<br>130萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>VGAx1/DVIx1<br>HDMIx1/CVBSx2<br>音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>無</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>無</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="v760" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>V760</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬3840<br>最高1920<br>130萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>VGAx1/DVIx1<br>HDMIx1/CVBSx1<br>USBx1<br>安卓(選配)x1<br>音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>6</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="v900" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>V900</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬3840<br>最高1920<br>230萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>4</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>VGAx2/DVIx1<br>HDMIx1/CVBSx2<br>YPBPRx1/音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>DVIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>VGAx1/DVIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>10</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="v960" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>V960</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬3840<br>最高1920<br>260萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>4</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>VGAx1/DVIx1<br>HDMIx1/CVBSx1<br>USBx1/音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>6</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="v1060" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>V1060</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬4096<br>最高4096<br>390萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>6</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>VGA(選配)x1/DVIx1<br>HDMIx2/SDIx1<br>安卓(選配)x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>DVIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>3+1(OSD)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>10</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="v1260" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>V1260</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬16384<br>最高8192<br>1040萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>16千兆+4光纖</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DVIx4/HDMIx1<br>SDIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>無</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>HDMIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>5</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>10</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="tabthree3" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>MRV366</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>512x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th>RGB組數</th>
+                                    <td>32組</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75E</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">狀態監控</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">逐點校正</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Mapping</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class=""></p>
+                  </div>
+                  <div class="tab-pane fade" id="tabtwo2" role="tabpanel">
+                    <ul class="nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">型號選擇</a>
+                        <div class="dropdown-menu" style="">
+                          <a class="dropdown-item" data-target="#tabone4" data-toggle="pill" href="">i5A-F</a>
+                          <a class="dropdown-item" data-target="#tabtwo4" data-toggle="pill" href="">5A-75B</a>
+                          <a class="dropdown-item" data-target="#tabthree4" data-toggle="pill" href="">5A-75E</a>
+                          <a class="dropdown-item" data-target="#s2" data-toggle="pill" href="">S2</a>
+                          <a class="dropdown-item" data-target="#s4" data-toggle="pill" href="">S4</a>
+                          <a class="dropdown-item" href="" data-target="#s6f" data-toggle="pill">S6F</a>
+                          <div class="dropdown-divider"></div>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="row  pi-draggable" draggable="true">
+                      <div class="col-12">
+                        <div class="tab-content">
+                          <div class="tab-pane fade" id="s6f" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>S6F</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬4096<br>最高2560<br>230萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>6千兆+3光纖</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DVIx1/HDMIx1/音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>DVIx1/HDMIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="s4" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>S4</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬4096<br>最高2560<br>230萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>4</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DVIx1/HDMIx1/音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>HDMIx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="s2" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>S2</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>最寬2560<br>最高2560<br>130萬</td>
+                                  </tr>
+                                  <tr>
+                                    <th>縮放</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">網孔</th>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸入</th>
+                                    <td>DVIx1/音源x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">輸出</th>
+                                    <td>無</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">自動亮度</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">監看</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">圖層</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">場景</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade show active" id="tabone4" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>i5A-F</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th>RGB組數</th>
+                                    <td>16組</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>50Pin</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">狀態監控</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">逐點校正</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="tabtwo4" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>5A-75B</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th>RGB組數</th>
+                                    <td>16組</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">狀態監控</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">逐點校正</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="tabthree4" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>5A-75E</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x512</td>
+                                  </tr>
+                                  <tr>
+                                    <th>RGB組數</th>
+                                    <td>32組</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">狀態監控</th>
+                                    <td>支援</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">逐點校正</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class=""></p>
+                  </div>
+                  <div class="tab-pane fade" id="tabthree2" role="tabpanel">
+                    <ul class="nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">型號選擇</a>
+                        <div class="dropdown-menu" style="">
+						  <a class="dropdown-item" href="" data-toggle="pill" data-target="#a30">A30</a>
+						  <a class="dropdown-item" href="" data-toggle="pill" data-target="#a30plus">A30+</a>
+						  <a class="dropdown-item" href="" data-toggle="pill" data-target="#c10">C10</a>
+						  <a class="dropdown-item" href="" data-toggle="pill" data-target="#c10c">C10C</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#c15">C15</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#c15c">C15C</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#c35">C35</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#c35c">C35C</a>
+						  <a class="dropdown-item" href="" data-toggle="pill" data-target="#d10">D10</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#d15">D15</a>
+						  <a class="dropdown-item" href="" data-toggle="pill" data-target="#d30">D30</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#d35">D35</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r500">R500</a>
+						  <a class="dropdown-item" href="" data-toggle="pill" data-target="#r501">R501</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r508">R508</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r512">R512</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r516">R516</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#r612">R612</a>
+                          <div class="dropdown-divider"></div>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="row  pi-draggable" draggable="true">
+                      <div class="col-12">
+                        <div class="tab-content">
+                          <div class="tab-pane fade" id="d30" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>D30</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024x64<br>512x128</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>50Pin</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="d10" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>D10</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>384x64<br>512x48<br>192x128</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Bx4</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="c10c" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C10C</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>384x320<br>1024x120<br>240x512</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Ex10</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="c10" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C10</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>384x320<br>1024x120<br>240x512</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>50Pinx2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="a30plus" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>A30+</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024x512<br>3840x136<br>256x2048</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>無</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade show active" id="a30" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>A30</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024x512<br>512x1024</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>50Pinx2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="d15" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>D15</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>640x64<br>最寬640<br>最高128</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Bx4</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="r500" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>R500</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>50Pinx2</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="r501" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>R501</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Ex12</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="r508" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>R508</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Ex8</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="r512" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>R512</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Ex12</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="r516" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>R516</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x512</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Ex16</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="r612" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>R612</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>256x384</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Ex12</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="c35" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C35</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024x512<br>512x1024</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>50Pinx2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="c15" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C15</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>384x320<br>1024x120<br>240x512</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>50Pinx2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="d35" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>D35</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024x64<br>最寬1024<br>最高128</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>50Pin</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>不支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="c15c" role="tabpanel" style="">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C15C</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>384x320<br>1024x120<br>240x512</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Ex10</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="c35c" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C35C</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024x512<br>512x1024</td>
+                                  </tr>
+                                  <tr>
+                                    <th>內建容量</th>
+                                    <td>4GB(可擴充)</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75Ex10</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">音訊輸出</th>
+                                    <td>支援</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class=""></p>
+                  </div>
+                  <div class="tab-pane fade" id="lm" role="tabpanel" style="">
+                    <ul class="nav">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">型號選擇</a>
+                        <div class="dropdown-menu" style="">
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm10b">10B</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm20a">20A</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm50a">50A</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm1200">1200</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm2200">2200</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm3200">3200</a>
+                          <a class="dropdown-item" href="" data-toggle="pill" data-target="#lm5200">5200</a>
+                          <div class="dropdown-divider"></div>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="row  pi-draggable" draggable="true">
+                      <div class="col-12">
+                        <div class="tab-content">
+                          <div class="tab-pane fade show active" id="lm10b" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C-Power10B</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024x64<br>七彩無灰度</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB12x4<br>HUB08x2<br>HUB75x2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">內建容量</th>
+                                    <td>8MB</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="lm20a" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered ">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C-Power20A</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>320x64</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB75x4<br>20Pinx1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">內建容量</th>
+                                    <td>8MB</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="lm50a" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C-Power50A</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>512x256</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>40Pinx2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">內建容量</th>
+                                    <td>256M</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="lm1200" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C-Power1200</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>512x16<br>256x32<br>單雙色</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB08x1<br>HUB12x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">內建容量</th>
+                                    <td>2M</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="lm2200" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C-Power2200</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024x16<br>512x32<br>256x64<br>單雙色</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB08x1<br>HUB12x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">內建容量</th>
+                                    <td>2M</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="lm3200" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C-Power3200</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024×32<br>512×64<br>256×128<br>單雙色</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>HUB08x1<br>HUB12x1</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">內建容量</th>
+                                    <td>256M</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                          <div class="tab-pane fade" id="lm5200" role="tabpanel">
+                            <div class="table-responsive pi-draggable" draggable="true">
+                              <table class="table table-bordered">
+                                <thead class="thead-dark" style="">
+                                  <tr>
+                                    <th>型號</th>
+                                    <th>C-Power5200</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th>帶載能力</th>
+                                    <td>1024×64<br>768×80<br>512×128<br>256×256</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">HUB</th>
+                                    <td>40Pinx2</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">內建容量</th>
+                                    <td>256M</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <p class=""></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class=""></p>
+                  </div>
+                </div>
+              </div>
+              <p class=""></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">© 2020 JoyLight. All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
+  <!--<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script>
+	var liffID = '1654981891-k2NAqmL5';
+
+	liff.init({
+	  liffId: liffID
+	}).then(function() {
+	  console.log('LIFF init');
+	  isLoggedIn = liff.isLoggedIn(); // Boolean。使用者是否登入 LINE 帳號。true 時，可呼叫需要 Access Token 的 API
+	  isInClient = liff.isInClient(); // Boolean。回傳是否由 LINE App 存取
+	  if(!isLoggedIn) {
+          liff.login({
+            redirectUri: 'https://joylightled.github.io/works/'
+          });
+        }
+	  liff.getProfile()
+		.then(function(profile) {
+		document.getElementById("user-name").innerHTML = profile.displayName;
+		console.log(profile);
+		if(profile.userId != "Udd4bab227078a8cd989596b0bfbe8696"){
+		  alert('很抱歉，您沒有權限！\n請將ID截圖告知管理員\n'+profile.userId);	
+          liff.logout();
+		  if(isInClient) {
+			liff.closeWindow();
+		  }
+		}
+    });
+	  // 這邊開始寫使用其他功能
+	  
+	}).catch(function(error) {
+	  console.log(error);
+	});
+  </script>-->
 </body>
+
 </html>
