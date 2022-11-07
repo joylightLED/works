@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="stylesheet" type="text/css"	href="http://61.220.158.210:88/js/jquery-ui-1.8.21.custom/css/vader/jquery-ui-1.8.21.custom.css" />
+<link href="http://61.220.158.210:88/skins/default/css/css-zh_TW.css" rel="stylesheet"	type="text/css" />
+<link rel="stylesheet"	href="http://61.220.158.210:88/skins/default/css/jqtransform.css" media="all" />
+<link rel="stylesheet" type="text/css" media="all" href="http://61.220.158.210:88/skins/default/css/niceforms-default.css" />
+<link rel="stylesheet" type="text/css" media="all" href="http://61.220.158.210:88/skins/default/css/ipubs-dialog.css" />
+
+
+<script type="text/javascript" src="http://61.220.158.210:88/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="http://61.220.158.210:88/js/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="http://61.220.158.210:88/js/niceforms.js"></script>
+<script type="text/javascript" src="http://61.220.158.210:88/js/jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="http://61.220.158.210:88/js/jquery.jqtransform.js"></script>
+<script type="text/javascript" src="http://61.220.158.210:88/js/ipub.models-zh_TW.js"></script>
+<script type="text/javascript" src="http://61.220.158.210:88/js/jsencrypt.min.js"></script>
+
+<script type="text/javascript" src="http://61.220.158.210:88/js/gnamp.js"></script>
+
+</head>
+<body style="overflow-x: hidden;overflow-y: hidden;">
+	
+<div class="tcWindow">
+	<h1><font color="white">666!!!</font></h1>
+</div>
+<script>
+		// Give classes to even and odd table rows for zebra striping.
+		$(document).ready(function() {
+			alert("666!!!");
+		});
+	</script>
+</body>
+</html>
