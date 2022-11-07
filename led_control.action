@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" media="all" href="http://61.220.158.210:88/skins/default/css/niceforms-default.css" />
 <link rel="stylesheet" type="text/css" media="all" href="http://61.220.158.210:88/skins/default/css/ipubs-dialog.css" />
 
-<script type="module" src="https://unpkg.com/x-frame-bypass"></script>
 <script type="text/javascript" src="http://61.220.158.210:88/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="http://61.220.158.210:88/js/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="http://61.220.158.210:88/js/niceforms.js"></script>
